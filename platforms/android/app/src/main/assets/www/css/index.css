@@ -1,0 +1,179 @@
+body{
+    background: linear-gradient(to right, rgb(17, 255, 189), rgb(170, 255, 169));
+}
+#header h1{
+    text-align: center;
+}
+ul li{
+  margin-top: 25px;
+    
+    border: 1px;
+    height:40px;
+    width: '100%';
+    margin-left: -40px;
+}
+#done{
+  margin-left: 20px;
+}
+#delete{
+  margin-left: 20px;
+    
+}
+.close {
+    padding: 10px;
+    display: inline;
+    border-radius: 2px;
+    font-family: "Arial";
+    border: 0;
+    margin: 0 10px;
+    background: red;
+    font-size: 15px;
+    line-height: 15px;
+    color: white;
+    width: auto;
+    height: auto;
+    
+    border-radius: 10px;
+     background: #e1f59f;
+  background-image: -webkit-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -moz-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -ms-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -o-linear-gradient(top, #e1f59f, #d48524);
+  background-image: linear-gradient(to bottom, #e1f59f, #d48524);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Georgia;
+  color: #ffffff;
+
+  text-decoration: none;
+
+
+
+  background: #e03ae0;
+  background-image: -webkit-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -moz-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -ms-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -o-linear-gradient(top, #e03ae0, #3498db);
+  background-image: linear-gradient(to bottom, #e03ae0, #3498db);
+  text-decoration: none;
+}
+.done {
+  padding: 10px;
+  display: inline;
+  border-radius: 2px;
+  font-family: "Arial";
+  border: 0;
+  margin: 0 10px;
+  background: red;
+  font-size: 15px;
+  line-height: 15px;
+  color: white;
+  width: auto;
+  height: auto;
+
+  border-radius: 10px;
+     background: #e1f59f;
+  background-image: -webkit-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -moz-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -ms-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -o-linear-gradient(top, #e1f59f, #d48524);
+  background-image: linear-gradient(to bottom, #e1f59f, #d48524);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Georgia;
+  color: #ffffff;
+ 
+  text-decoration: none;
+
+
+
+  background: #e03ae0;
+  background-image: -webkit-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -moz-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -ms-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -o-linear-gradient(top, #e03ae0, #3498db);
+  background-image: linear-gradient(to bottom, #e03ae0, #3498db);
+  text-decoration: none;
+}
+.doing {
+  padding: 10px;
+  display: inline;
+  border-radius: 2px;
+  font-family: "Arial";
+  border: 0;
+  margin: 0 10px;
+  background: red;
+  font-size: 15px;
+  line-height: 15px;
+  color: white;
+  width: auto;
+  height: auto;
+
+  border-radius: 10px;
+     background: #e1f59f;
+  background-image: -webkit-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -moz-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -ms-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -o-linear-gradient(top, #e1f59f, #d48524);
+  background-image: linear-gradient(to bottom, #e1f59f, #d48524);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Georgia;
+  color: #ffffff;
+
+  
+  text-decoration: none;
+
+
+
+  background: #e03ae0;
+  background-image: -webkit-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -moz-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -ms-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -o-linear-gradient(top, #e03ae0, #3498db);
+  background-image: linear-gradient(to bottom, #e03ae0, #3498db);
+  text-decoration: none;
+    
+}
+.add{
+  padding: 10px;
+  display: inline;
+  border-radius: 2px;
+  font-family: "Arial";
+  border: 0;
+  margin: 0 10px;
+  background: red;
+  font-size: 15px;
+  line-height: 15px;
+  color: white;
+  width: auto;
+  height: auto;
+ 
+  border-radius: 10px;
+     background: #e1f59f;
+  background-image: -webkit-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -moz-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -ms-linear-gradient(top, #e1f59f, #d48524);
+  background-image: -o-linear-gradient(top, #e1f59f, #d48524);
+  background-image: linear-gradient(to bottom, #e1f59f, #d48524);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Georgia;
+  color: #ffffff;
+ 
+  text-decoration: none;
+
+
+
+  background: #e03ae0;
+  background-image: -webkit-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -moz-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -ms-linear-gradient(top, #e03ae0, #3498db);
+  background-image: -o-linear-gradient(top, #e03ae0, #3498db);
+  background-image: linear-gradient(to bottom, #e03ae0, #3498db);
+  text-decoration: none;
+}
