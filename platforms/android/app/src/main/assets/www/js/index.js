@@ -33,6 +33,34 @@ var app = {
 
 
     onDeviceReady: function () {
+      var storage = window.localStorage;
+
+      var taskList = [];
+      taskList[0] = "Hit the gym";
+      taskList[1] = "Pay bills";
+      taskList[2] = "Meet George";
+      taskList[3] = "Buy eggs";
+      taskList[4] = "Read a book";
+      taskList[5] = "Organize office";
+
+      var i;
+      var value = [];
+      for(i=0;i<taskList.length;i++)
+      {
+        storage.setItem(list+i, taskList[i]);
+        value[i] = storage.getItem(list+i);
+        //alert(value);
+      }
+
+
+       // Pass a key name to get its value.
+       // Pass a key name and its value to add or update that key.
+
+
+
+
+
+
         alert("Device is Ready!");
         var element = document.getElementById("header");
 
@@ -97,48 +125,63 @@ var app = {
             span3.appendChild(txt3);
 
             var li = document.createElement("li");
-            var inputValue = document.getElementById("myInput").value;
-            var t = document.createTextNode(inputValue);
-            li.appendChild(t);
+            var inputValue;
 
-
-            li.appendChild(span);
-            li.appendChild(span2);
-            li.appendChild(span3);
-
-            if (inputValue === '') {
-              alert("You must write something!");
-            } else
+            for(i=0;i<100000;i++)
             {
-              document.getElementById("myUL").appendChild(li);
-              document.getElementById("myInput").value = "";
+              if(value[i] == null)
+              {
+                inputValue = document.getElementById("myInput").value;
+                storage.setItem(list+i, inputValue);
+
+                var t = document.createTextNode(inputValue);
+                li.appendChild(t);
+
+
+                li.appendChild(span);
+                li.appendChild(span2);
+                li.appendChild(span3);
+
+                if (inputValue === '') {
+                  alert("You must write something!");
+                   break;
+                } else
+                {
+                  document.getElementById("myUL").appendChild(li);
+                  document.getElementById("myInput").value = "";
+                  var close = document.getElementsByClassName("close");
+                  var i;
+                  for (i = 0; i < close.length; i++) {
+                    close[i].onclick = function() {
+                      var div = this.parentElement;
+                      div.style.display = "none";
+                    }
+                  }
+                  var done = document.getElementsByClassName("done");
+                  var i;
+                  for (i = 0; i < done.length; i++) {
+                    done[i].onclick = function() {
+                      var div = this.parentElement;
+                      div.style.textDecoration = "line-through";
+                    }
+                  }
+                  var doing = document.getElementsByClassName("doing");
+                  var i;
+                  for (i = 0; i < doing.length; i++) {
+                    doing[i].onclick = function() {
+                      var div = this.parentElement;
+                      div.style.textDecoration = "underline";
+                    }
+                  }
+                  break;
+                }
+
+
+
+              }
             }
 
 
-            var close = document.getElementsByClassName("close");
-            var i;
-            for (i = 0; i < close.length; i++) {
-              close[i].onclick = function() {
-                var div = this.parentElement;
-                div.style.display = "none";
-              }
-            }
-            var done = document.getElementsByClassName("done");
-            var i;
-            for (i = 0; i < done.length; i++) {
-              done[i].onclick = function() {
-                var div = this.parentElement;
-                div.style.textDecoration = "line-through";
-              }
-            }
-            var doing = document.getElementsByClassName("doing");
-            var i;
-            for (i = 0; i < doing.length; i++) {
-              doing[i].onclick = function() {
-                var div = this.parentElement;
-                div.style.textDecoration = "underline";
-              }
-            }
 
           }
         }
