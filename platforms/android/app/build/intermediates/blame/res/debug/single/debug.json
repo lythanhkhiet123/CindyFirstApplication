@@ -24,12 +24,12 @@
         "source": "C:\\Users\\VincentLy\\Desktop\\FirstApplication\\platforms\\android\\app\\src\\main\\res\\mipmap-ldpi\\icon.png"
     },
     {
-        "merged": "D:\\Users\\5931\\Downloads\\TestJS\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-xxhdpi_screen.png.flat",
-        "source": "D:\\Users\\5931\\Downloads\\TestJS\\platforms\\android\\app\\src\\main\\res\\drawable-land-xxhdpi\\screen.png"
-    },
-    {
         "merged": "C:\\Users\\VincentLy\\Downloads\\TestJS\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml_config.xml.flat",
         "source": "C:\\Users\\VincentLy\\Downloads\\TestJS\\platforms\\android\\app\\src\\main\\res\\xml\\config.xml"
+    },
+    {
+        "merged": "D:\\Users\\5931\\Downloads\\TestJS\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-xxhdpi_screen.png.flat",
+        "source": "D:\\Users\\5931\\Downloads\\TestJS\\platforms\\android\\app\\src\\main\\res\\drawable-land-xxhdpi\\screen.png"
     },
     {
         "merged": "D:\\Users\\5931\\Downloads\\TestJS\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-ldpi_screen.png.flat",

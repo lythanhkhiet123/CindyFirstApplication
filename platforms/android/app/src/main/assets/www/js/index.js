@@ -6,58 +6,17 @@ var app = {
         document.addEventListener("resume", this.onResume.bind(this), false);
     },
     onPause: function () {
-      // var storage = window.localStorage;
-      //
-      // var taskList = [];
-      //
-      // var i;
-      // var value = [];
-      // for(i=0;i<100000;i++)
-      // {
-      //   storage.setItem(list+i, taskList[i]);
-      //   value[i] = storage.getItem(list+i);
-      //   if(value[i] == null)
-      //   {
-      //     break;
-      //   }
-      //   //alert(value);
-      // }
+
       alert("onPause CALLED");
     },
     onResume: function () {
-      // var storage = window.localStorage;
-      //
-      // var taskList = [];
-      //
-      // var i;
-      // var value = [];
-      // for(i=0;i<100000;i++)
-      // {
-      //   //storage.setItem(list+i, taskList[i]);
-      //   value[i] = storage.getItem(list+i);
-      //   if(value[i] == null)
-      //   {
-      //     break;
-      //   }
-      //   else
-      //     alert(value);
-      // }
-
 
       alert("onResume CALLED");
 
 
     },
 
-    callAlert: function () {
 
-        // We care selecting the input box based on id
-
-       var txt= document.getElementById("txtname");
-
-        // Shwoing the value of the input box
-        alert("Text was extracted : : " + txt.value);
-    },
     doneButton: function(){
 
     },
@@ -70,72 +29,105 @@ var app = {
 
 
     onDeviceReady: function () {
-      var storage = window.localStorage;
-
       var taskList = [];
-      taskList[0] = "Hit the gym";
+      taskList[0] = "undefined";
       taskList[1] = "Pay bills";
       taskList[2] = "Meet George";
       taskList[3] = "Buy eggs";
       taskList[4] = "Read a book";
       taskList[5] = "Organize office";
+var element = document.getElementById("header");
+      var array = [];
 
-      var i;
-      var value = [];
-      for(i=0;i<taskList.length;i++)
-      {
-        storage.setItem(list+i, taskList[i]);
-        value[i] = storage.getItem(list+i);
-        //alert(value);
-      }
+      var db = window.sqlitePlugin.openDatabase({name: 'taskList.db', location: 'default'});
+      db.transaction(function(tr) {
+        // tr.executeSql('CREATE TABLE IF NOT EXISTS listTable (id INTEGER PRIMARY KEY AUTOINCREMENT, list)');
+        // tr.executeSql('DELETE FROM listTable');
+        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[0]+'")');
+        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[1]+'")');
+        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[2]+'")');
+        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[3]+'")');
+        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[4]+'")');
+        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[5]+'")');
+          tr.executeSql('SELECT * FROM listTable', [], function(tr, rs) {
+
+            for(var number=0;number<rs.rows.length;number++)
+            {
+
+              array[number] = rs.rows.item(number).list;
 
 
-       // Pass a key name to get its value.
-       // Pass a key name and its value to add or update that key.
 
 
 
 
+              var span = document.createElement("SPAN");
+              var txt = document.createTextNode("Delete");
+
+              var span2 = document.createElement("SPAN");
+              var txt2 = document.createTextNode("Done");
+
+              var span3 = document.createElement("SPAN");
+              var txt3 = document.createTextNode("Doing");
+
+              span.className = "close";
+              span.appendChild(txt);
+
+              span2.className = "done";
+              span2.appendChild(txt2);
+
+              span3.className = "doing";
+              span3.appendChild(txt3);
+              //
+              var li = document.createElement("li");
+              var text = document.createTextNode(array[i]);
+              li.appendChild(text);
+              li.appendChild(span);
+              li.appendChild(span2);
+              li.appendChild(span3);
+              document.getElementById("myUL").appendChild(li);
+
+              var close = document.getElementsByClassName("close");
+
+              for (var i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                  var div = this.parentElement;
+
+                  alert(div.childNodes[0].data);
+
+  db.transaction(function(tr) {
+     tr.executeSql('DELETE FROM listTable WHERE list = "'+div.childNodes[0].data+'"');
+  });
+
+                  document.getElementById("myUL").removeChild(div);
+                }
+              }
+              var done = document.getElementsByClassName("done");
+
+              for (var i = 0; i < done.length; i++) {
+                done[i].onclick = function() {
+                  var div = this.parentElement;
+                  div.style.textDecoration = "line-through";
+                }
+              }
+              var doing = document.getElementsByClassName("doing");
+
+              for (var i = 0; i < doing.length; i++) {
+                doing[i].onclick = function() {
+                  var div = this.parentElement;
+                  div.style.textDecoration = "underline";
+                }
+              }
 
 
-        alert("Device is Ready!");
-        var element = document.getElementById("header");
+            }
+            alert(array.length);
+          });
+        });
 
-        // Create a "close" button and append it to each list item
-        // var myNodelist = document.getElementsByTagName("LI");
 
-        var i;
-        for (i = 0; i < value.length; i++) {
-          var span = document.createElement("SPAN");
-          var txt = document.createTextNode("Delete");
+          alert("Device is Ready!");
 
-          var span2 = document.createElement("SPAN");
-          var txt2 = document.createTextNode("Done");
-
-          var span3 = document.createElement("SPAN");
-          var txt3 = document.createTextNode("Doing");
-
-          span.className = "close";
-          span.appendChild(txt);
-
-          span2.className = "done";
-          span2.appendChild(txt2);
-
-          span3.className = "doing";
-          span3.appendChild(txt3);
-          var li = document.createElement("li");
-          var text = document.createTextNode(value[i]);
-          li.appendChild(text);
-          li.appendChild(span);
-          li.appendChild(span2);
-          li.appendChild(span3);
-          document.getElementById("myUL").appendChild(li);
-          // myNodelist[i].appendChild(span);
-          // myNodelist[i].appendChild(span2);
-          // myNodelist[i].appendChild(span3);
-          // Click on a close button to hide the current list item
-
-        }
         var span4 = document.createElement("SPAN");
         var txt4 = document.createTextNode("Add");
 
@@ -169,18 +161,21 @@ var app = {
 
             var li = document.createElement("li");
             var inputValue;
-
+        //
             for(i=0;i<100000;i++)
             {
-              if(value[i] == null)
+              if(array[i] == null)
               {
                 inputValue = document.getElementById("myInput").value;
-                storage.setItem(list+i, inputValue);
+                db.transaction(function(tr) {
+
+                   tr.executeSql('INSERT INTO listTable (list) VALUES ("'+inputValue+'")');
+                });
 
                 var t = document.createTextNode(inputValue);
                 li.appendChild(t);
-
-
+        //
+        //
                 li.appendChild(span);
                 li.appendChild(span2);
                 li.appendChild(span3);
@@ -195,9 +190,15 @@ var app = {
                   var close = document.getElementsByClassName("close");
                   var i;
                   for (i = 0; i < close.length; i++) {
-                    close[i].onclick = function() {
-                      var div = this.parentElement;
-                      div.style.display = "none";
+                    close[i].onclick = function() {var div = this.parentElement;
+
+                    alert(div.childNodes[0].data);
+
+                    db.transaction(function(tr) {
+                       tr.executeSql('DELETE FROM listTable WHERE list = "'+div.childNodes[0].data+'"');
+                    });
+
+                    document.getElementById("myUL").removeChild(div);
                     }
                   }
                   var done = document.getElementsByClassName("done");
@@ -229,44 +230,9 @@ var app = {
           }
         }
 
-        var close = document.getElementsByClassName("close");
-        var i;
-        for (i = 0; i < close.length; i++) {
-          close[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.display = "none";
-          }
-        }
-        var done = document.getElementsByClassName("done");
-        var i;
-        for (i = 0; i < done.length; i++) {
-          done[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.textDecoration = "line-through";
-          }
-        }
-        var doing = document.getElementsByClassName("doing");
-        var i;
-        for (i = 0; i < doing.length; i++) {
-          doing[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.textDecoration = "underline";
-          }
-        }
 
-
-
-
-        // Add a "checked" symbol when clicking on a list item
-        var list = document.querySelector('ul');
-        list.addEventListener('click', function(ev) {
-          if (ev.target.tagName === 'LI') {
-            ev.target.classList.toggle('checked');
-          }
-        }, false);
         //  Adding Button click event
         document.getElementById("clickAdd").addEventListener('click', this.myFunction.bind(this), false);
-        document.getElementById("btnClick").addEventListener('click', this.callAlert.bind(this), false);
 
 
 
