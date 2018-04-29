@@ -21,143 +21,109 @@ var app = {
 
     },
     deleteButton: function(){
-      // Click on a close button to hide the current list item
+
       alert("Delete is pressed");
-
-
     },
-
-
     onDeviceReady: function () {
+      //loading page
       var taskList = [];
-      taskList[0] = "undefined";
-      taskList[1] = "Pay bills";
-      taskList[2] = "Meet George";
-      taskList[3] = "Buy eggs";
-      taskList[4] = "Read a book";
-      taskList[5] = "Organize office";
-var element = document.getElementById("header");
+      taskList[0] = "item 1";
+      taskList[1] = "item 2";
+      taskList[2] = "item 3";
+      taskList[3] = "item 4";
+      taskList[4] = "item 5";
+var element = document.getElementById("myDiv");
       var array = [];
-
+//creating the database
       var db = window.sqlitePlugin.openDatabase({name: 'taskList.db', location: 'default'});
       db.transaction(function(tr) {
-        // tr.executeSql('CREATE TABLE IF NOT EXISTS listTable (id INTEGER PRIMARY KEY AUTOINCREMENT, list)');
-        // tr.executeSql('DELETE FROM listTable');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[0]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[1]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[2]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[3]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[4]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[5]+'")');
+        tr.executeSql('CREATE TABLE IF NOT EXISTS listTable (id INTEGER PRIMARY KEY AUTOINCREMENT, list)');
+        tr.executeSql('DELETE FROM listTable');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[0]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[1]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[2]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[3]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[4]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[5]+'")');
           tr.executeSql('SELECT * FROM listTable', [], function(tr, rs) {
 
             for(var number=0;number<rs.rows.length;number++)
             {
-
               array[number] = rs.rows.item(number).list;
-
-
-
-
-
-
+              //create the button
               var span = document.createElement("SPAN");
-              var txt = document.createTextNode("Delete");
+              var txt = document.createTextNode("Remove");
 
               var span2 = document.createElement("SPAN");
-              var txt2 = document.createTextNode("Done");
+              var txt2 = document.createTextNode("-");
 
-              var span3 = document.createElement("SPAN");
-              var txt3 = document.createTextNode("Doing");
-
-              span.className = "close";
+              span.className = "remove";
               span.appendChild(txt);
 
-              span2.className = "done";
+              span2.className = "check";
               span2.appendChild(txt2);
 
-              span3.className = "doing";
-              span3.appendChild(txt3);
-              //
+
+              //but the button in the list
               var li = document.createElement("li");
               var text = document.createTextNode(array[i]);
               li.appendChild(text);
               li.appendChild(span);
               li.appendChild(span2);
-              li.appendChild(span3);
-              document.getElementById("myUL").appendChild(li);
 
-              var close = document.getElementsByClassName("close");
+              document.getElementById("myList").appendChild(li);
 
-              for (var i = 0; i < close.length; i++) {
-                close[i].onclick = function() {
+              var remove = document.getElementsByClassName("remove");
+
+              for (var i = 0; i < remove.length; i++) {
+                remove[i].onclick = function() {
                   var div = this.parentElement;
-
-                  alert(div.childNodes[0].data);
-
+//Delete item from database
   db.transaction(function(tr) {
      tr.executeSql('DELETE FROM listTable WHERE list = "'+div.childNodes[0].data+'"');
   });
 
-                  document.getElementById("myUL").removeChild(div);
+                  document.getElementById("myList").removeChild(div);
                 }
               }
-              var done = document.getElementsByClassName("done");
+              var check = document.getElementsByClassName("check");
 
-              for (var i = 0; i < done.length; i++) {
-                done[i].onclick = function() {
+              for (var i = 0; i < check.length; i++) {
+                check[i].onclick = function() {
                   var div = this.parentElement;
                   div.style.textDecoration = "line-through";
                 }
               }
-              var doing = document.getElementsByClassName("doing");
-
-              for (var i = 0; i < doing.length; i++) {
-                doing[i].onclick = function() {
-                  var div = this.parentElement;
-                  div.style.textDecoration = "underline";
-                }
-              }
-
 
             }
-            alert(array.length);
+
           });
         });
+        //Create the add button
+        var span3 = document.createElement("SPAN");
+        var txt3 = document.createTextNode("+");
 
+        span3.className = "add";
+        span3.appendChild(txt3);
 
-          alert("Device is Ready!");
-
-        var span4 = document.createElement("SPAN");
-        var txt4 = document.createTextNode("Add");
-
-        span4.className = "add";
-        span4.appendChild(txt4);
-
-        element.appendChild(span4);
-
+        element.appendChild(span3);
+        // create the add function
         var add = document.getElementsByClassName("add");
         var i;
         for (i = 0; i < add.length; i++) {
           add[i].onclick = function() {
             var div = this.parentElement;
             var span = document.createElement("SPAN");
-            var txt = document.createTextNode("Delete");
+            var txt = document.createTextNode("Remove");
 
             var span2 = document.createElement("SPAN");
-            var txt2 = document.createTextNode("Done");
+            var txt2 = document.createTextNode("-");
 
-            var span3 = document.createElement("SPAN");
-            var txt3 = document.createTextNode("Doing");
-
-            span.className = "close";
+            span.className = "remove";
             span.appendChild(txt);
 
-            span2.className = "done";
+            span2.className = "check";
             span2.appendChild(txt2);
-
-            span3.className = "doing";
-            span3.appendChild(txt3);
 
             var li = document.createElement("li");
             var inputValue;
@@ -166,7 +132,7 @@ var element = document.getElementById("header");
             {
               if(array[i] == null)
               {
-                inputValue = document.getElementById("myInput").value;
+                inputValue = document.getElementById("inputNewTask").value;
                 db.transaction(function(tr) {
 
                    tr.executeSql('INSERT INTO listTable (list) VALUES ("'+inputValue+'")');
@@ -174,58 +140,45 @@ var element = document.getElementById("header");
 
                 var t = document.createTextNode(inputValue);
                 li.appendChild(t);
-        //
-        //
                 li.appendChild(span);
                 li.appendChild(span2);
-                li.appendChild(span3);
+
 
                 if (inputValue === '') {
-                  alert("You must write something!");
+                  alert("Text box is empty!");
                    break;
                 } else
                 {
-                  document.getElementById("myUL").appendChild(li);
-                  document.getElementById("myInput").value = "";
-                  var close = document.getElementsByClassName("close");
+                  document.getElementById("myList").appendChild(li);
+                  document.getElementById("inputNewTask").value = "";
+                  var remove = document.getElementsByClassName("remove");
                   var i;
-                  for (i = 0; i < close.length; i++) {
-                    close[i].onclick = function() {var div = this.parentElement;
+                  for (i = 0; i < remove.length; i++) {
+                    remove[i].onclick = function() {var div = this.parentElement;
 
-                    alert(div.childNodes[0].data);
+
 
                     db.transaction(function(tr) {
                        tr.executeSql('DELETE FROM listTable WHERE list = "'+div.childNodes[0].data+'"');
                     });
 
-                    document.getElementById("myUL").removeChild(div);
+                    document.getElementById("myList").removeChild(div);
                     }
                   }
-                  var done = document.getElementsByClassName("done");
+                  var check = document.getElementsByClassName("check");
                   var i;
-                  for (i = 0; i < done.length; i++) {
-                    done[i].onclick = function() {
+                  for (i = 0; i < check.length; i++) {
+                    check[i].onclick = function() {
                       var div = this.parentElement;
                       div.style.textDecoration = "line-through";
                     }
                   }
-                  var doing = document.getElementsByClassName("doing");
-                  var i;
-                  for (i = 0; i < doing.length; i++) {
-                    doing[i].onclick = function() {
-                      var div = this.parentElement;
-                      div.style.textDecoration = "underline";
-                    }
-                  }
+
                   break;
                 }
 
-
-
               }
             }
-
-
 
           }
         }
@@ -233,11 +186,6 @@ var element = document.getElementById("header");
 
         //  Adding Button click event
         document.getElementById("clickAdd").addEventListener('click', this.myFunction.bind(this), false);
-
-
-
-
-
     }
 };
 
