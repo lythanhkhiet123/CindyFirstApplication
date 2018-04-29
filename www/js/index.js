@@ -41,14 +41,14 @@ var element = document.getElementById("header");
 
       var db = window.sqlitePlugin.openDatabase({name: 'taskList.db', location: 'default'});
       db.transaction(function(tr) {
-        // tr.executeSql('CREATE TABLE IF NOT EXISTS listTable (id INTEGER PRIMARY KEY AUTOINCREMENT, list)');
-        // tr.executeSql('DELETE FROM listTable');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[0]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[1]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[2]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[3]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[4]+'")');
-        // tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[5]+'")');
+        tr.executeSql('CREATE TABLE IF NOT EXISTS listTable (id INTEGER PRIMARY KEY AUTOINCREMENT, list)');
+        //tr.executeSql('DELETE FROM listTable');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[0]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[1]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[2]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[3]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[4]+'")');
+        tr.executeSql('INSERT INTO listTable (list) VALUES ("'+taskList[5]+'")');
           tr.executeSql('SELECT * FROM listTable', [], function(tr, rs) {
 
             for(var number=0;number<rs.rows.length;number++)
