@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Apr 28 22:41:21 AEST 2018
+#Sat Apr 28 23:46:53 AEST 2018
 25.file=C\:\\Users\\VincentLy\\Desktop\\FirstApplication\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\mipmap-xxxhdpi-v4\\icon.png
 25.base=C\:\\Users\\VincentLy\\Desktop\\FirstApplication\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_
 22.set=DEX

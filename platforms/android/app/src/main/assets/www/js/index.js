@@ -6,10 +6,47 @@ var app = {
         document.addEventListener("resume", this.onResume.bind(this), false);
     },
     onPause: function () {
+      // var storage = window.localStorage;
+      //
+      // var taskList = [];
+      //
+      // var i;
+      // var value = [];
+      // for(i=0;i<100000;i++)
+      // {
+      //   storage.setItem(list+i, taskList[i]);
+      //   value[i] = storage.getItem(list+i);
+      //   if(value[i] == null)
+      //   {
+      //     break;
+      //   }
+      //   //alert(value);
+      // }
       alert("onPause CALLED");
     },
     onResume: function () {
+      // var storage = window.localStorage;
+      //
+      // var taskList = [];
+      //
+      // var i;
+      // var value = [];
+      // for(i=0;i<100000;i++)
+      // {
+      //   //storage.setItem(list+i, taskList[i]);
+      //   value[i] = storage.getItem(list+i);
+      //   if(value[i] == null)
+      //   {
+      //     break;
+      //   }
+      //   else
+      //     alert(value);
+      // }
+
+
       alert("onResume CALLED");
+
+
     },
 
     callAlert: function () {
@@ -65,10 +102,10 @@ var app = {
         var element = document.getElementById("header");
 
         // Create a "close" button and append it to each list item
-        var myNodelist = document.getElementsByTagName("LI");
+        // var myNodelist = document.getElementsByTagName("LI");
 
         var i;
-        for (i = 0; i < myNodelist.length; i++) {
+        for (i = 0; i < value.length; i++) {
           var span = document.createElement("SPAN");
           var txt = document.createTextNode("Delete");
 
@@ -86,10 +123,16 @@ var app = {
 
           span3.className = "doing";
           span3.appendChild(txt3);
-
-          myNodelist[i].appendChild(span);
-          myNodelist[i].appendChild(span2);
-          myNodelist[i].appendChild(span3);
+          var li = document.createElement("li");
+          var text = document.createTextNode(value[i]);
+          li.appendChild(text);
+          li.appendChild(span);
+          li.appendChild(span2);
+          li.appendChild(span3);
+          document.getElementById("myUL").appendChild(li);
+          // myNodelist[i].appendChild(span);
+          // myNodelist[i].appendChild(span2);
+          // myNodelist[i].appendChild(span3);
           // Click on a close button to hide the current list item
 
         }
